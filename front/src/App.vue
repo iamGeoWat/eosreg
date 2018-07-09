@@ -89,8 +89,6 @@
           <p>EOS 账号设置在公钥-私钥对（ KeyPair ）下，一个公钥下可以有多个账号。拥有私钥即拥有其对应的公钥下所有账号的控制权。</p>
           <h3>如何生成自己的公钥-私钥对（KeyPair）？</h3>
           <p>出于安全原因，我们不为您提供生成 公钥-私钥对 的服务。私钥必须由您一人掌握。<br>建议您使用 EOSNewYork 支持开发的开源 Chrome 浏览器插件 <a href="https://get-scatter.com/" target="_blank">Scatter</a> 来管理、生成 公钥-私钥对。<br> 您也可以使用您习惯的 EOS 钱包 App 。</p>
-          <h3>关于本网站暂未使用 HTTPS 的说明</h3>
-          <p>因为注册过程中传输的所有数据都与</p>
         </el-card>
       </el-row>
     </el-main>
@@ -236,6 +234,7 @@ export default {
             })
 
             this.refreshHistory();
+            this.shallNotPass = true;
             this.dialogVisible = false;
           })
         })

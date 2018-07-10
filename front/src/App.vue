@@ -4,27 +4,43 @@
     <el-main>
       <el-row justify="center" type="flex">
         <el-card class="body-card" type="flex">
-          <div style="margin-top: 20px; margin-bottom: 10px">
+          <el-switch style="float: right;" @change="switchLang()" v-model="langSelect" inactive-text="中文" active-text="English" active-color="#409EFF" inactive-color="#409EFF"/>
+          <div style="margin-top: 30px;">
             <span class="h1">EOS 账号创建服务</span>
-            <el-switch style="float: right;" @change="switchLang()" v-model="langSelect" inactive-text="中文" active-text="English" active-color="#409EFF" inactive-color="#409EFF"/>
           </div>
           <h3>实时定价，加密货币支付</h3>
           <hr>
-          <div>EOS的机制决定了，新账号需要一个已经拥有账号的人去创建，来给新账户支付一些 RAM（内存，使用EOS支付）。如果您在我们的网站注册，我们会帮助您生成一个拥有 4KB RAM 和 0.2 EOS（用以 CPU 以及网络带宽），您只需要提供公钥和15%的手续费。</div>
+          <div>EOS的机制决定了，新账号需要一个已经拥有账号的人去创建，来给新账户支付一些 RAM（内存，使用EOS支付）。如果您在我们的网站注册，我们会帮助您生成一个拥有 4KB RAM 和 0.2 EOS（用以 CPU 以及网络带宽），您只需要提供公钥和10%的手续费。</div>
           <br>
-          <el-row justify="center" type="flex">
-            <el-card style="width: 70%; text-align: center">
-              <el-input style="width: 250px" @change="paramChanged()" placeholder="账号名" v-model="accountName"/>
-              <div style="font-size: 5px; color: grey; margin-top: 5px">*EOS 账户名长度必须正好 12 字符，仅能由 小写字母 以及 1 2 3 4 5 组成</div>
+            <el-card class="input-card">
+              <el-row type="flex" justify="space-between">
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+                <el-col :xs="22" :sm="8" :md="8" :lg="8" :xl="8"><el-input @change="paramChanged()" placeholder="账号名" v-model="accountName"/></el-col>
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+              </el-row>
+              <div class="hint-label">*EOS 账户名长度必须正好 12 字符，仅能由 小写字母 以及 1 2 3 4 5 组成</div>
               <br>
-              <el-input style="width: 300px" @change="paramChanged()" placeholder="Owner Public Key" v-model="ownerPubKey"/>
-              <el-input style="width: 300px; margin-left: 5px" @change="paramChanged()" placeholder="Active Public Key" v-model="activePubKey"/>
-              <div style="font-size: 5px; color: grey; margin-top: 5px">*可以都填需创建账户的公钥</div>
-              <el-input style="width: 300px; margin-top: 18px" placeholder="电子邮件" v-model="customerEmail"/>
-              <div style="font-size: 5px; color: grey; margin-top: 5px">*仅出于便于联系的目的，可不填</div>
+              <el-row type="flex" justify="space-between">
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+                <el-col :xs="22" :sm="12" :md="12" :lg="12" :xl="12"><el-input @change="paramChanged()" placeholder="Owner Public Key" v-model="ownerPubKey"/></el-col>
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+              </el-row>
+              <el-row type="flex" justify="space-between" style="margin-top: 2px">
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+                <el-col :xs="22" :sm="12" :md="12" :lg="12" :xl="12"><el-input @change="paramChanged()" placeholder="Active Public Key" v-model="activePubKey"/></el-col>
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+              </el-row>
+
+              <div class="hint-label">*可以都填需创建账户的公钥</div>
+              <el-row type="flex" justify="space-between" style="margin-top: 18px">
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+                <el-col :xs="22" :sm="8" :md="8" :lg="8" :xl="8"><el-input placeholder="电子邮件" v-model="customerEmail"/></el-col>
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+              </el-row>
+              <div class="hint-label">*仅出于便于联系的目的，可不填</div>
               <el-button type="default" style="margin-top: 10px" @click="checkAccount()">检查可用性</el-button>
               <el-button type="primary" style="margin-top: 10px" @click="goCreate()" :disabled="shallNotPass">创建 EOS 主网账户</el-button>
-              <div style="font-size: 5px; color: grey; margin-top: 5px">*点击后，请耐心等待付款页面加载</div>
+              <div class="hint-label">*点击后，请耐心等待付款页面加载</div>
 
 
               <el-dialog title="确认购买我们的服务" :visible.sync="dialogVisible">
@@ -57,8 +73,8 @@
                   </el-button>
                 </div>
               </el-dialog>
+
             </el-card>
-          </el-row>
         </el-card>
       </el-row>
 
@@ -102,27 +118,43 @@
     <el-main>
       <el-row justify="center" type="flex">
         <el-card class="body-card" type="flex">
-          <div style="margin-top: 20px; margin-bottom: 10px">
+          <el-switch style="float: right;" @change="switchLang()" v-model="langSelect" inactive-text="中文" active-text="English" active-color="#409EFF" inactive-color="#409EFF"/>
+          <div style="margin-top: 30px;">
             <span class="h1">EOS Account Creation Service</span>
-            <el-switch style="float: right;" @change="switchLang()" v-model="langSelect" inactive-text="中文" active-text="English" active-color="#409EFF" inactive-color="#409EFF"/>
           </div>
-          <h3>Real-time Price, Pay with Cryptocurrency.</h3>
+          <h3>Real-time Pricing, Pay with Cryptocurrency.</h3>
           <hr>
           <div>The creation of a new EOS account requires someone to spend some EOS token on the creation action. The token is paid for RAM, Network and CPU resource used by a new account. If you create your account with our service, a new account will be possessing 4KB RAM and 0.2 EOS staked for Network and CPU. Only 10% fee is needed ( Others usually require 20% ).</div>
           <br>
-          <el-row justify="center" type="flex">
-            <el-card style="width: 70%; text-align: center">
-              <el-input style="width: 250px" @change="paramChanged()" placeholder="Account Name" v-model="accountName"/>
-              <div style="font-size: 5px; color: grey; margin-top: 5px">*Exact 12 characters, use only LOWER CASE letters and 1 2 3 4 5</div>
+            <el-card class="input-card">
+              <el-row type="flex" justify="space-between">
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+                <el-col :xs="22" :sm="8" :md="8" :lg="8" :xl="8"><el-input @change="paramChanged()" placeholder="Account Name" v-model="accountName"/></el-col>
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+              </el-row>
+              <div class="hint-label">*Exact 12 characters, use only LOWER CASE letters and 1 2 3 4 5</div>
               <br>
-              <el-input style="width: 300px" @change="paramChanged()" placeholder="Owner Public Key" v-model="ownerPubKey"/>
-              <el-input style="width: 300px; margin-left: 5px" @change="paramChanged()" placeholder="Active Public Key" v-model="activePubKey"/>
-              <div style="font-size: 5px; color: grey; margin-top: 5px">*Above two can be the same</div>
-              <el-input style="width: 300px; margin-top: 18px" placeholder="E-mail Addreess" v-model="customerEmail"/>
-              <div style="font-size: 5px; color: grey; margin-top: 5px">*Only for communication when error occurs, can be empty</div>
+              <el-row type="flex" justify="space-between">
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+                <el-col :xs="22" :sm="12" :md="12" :lg="12" :xl="12"><el-input @change="paramChanged()" placeholder="Owner Public Key" v-model="ownerPubKey"/></el-col>
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+              </el-row>
+              <el-row type="flex" justify="space-between" style="margin-top: 2px">
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+                <el-col :xs="22" :sm="12" :md="12" :lg="12" :xl="12"><el-input @change="paramChanged()" placeholder="Active Public Key" v-model="activePubKey"/></el-col>
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+              </el-row>
+              <div class="hint-label">*Above two can be the same</div>
+              <el-row type="flex" justify="space-between" style="margin-top: 18px">
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+                <el-col :xs="22" :sm="8" :md="8" :lg="8" :xl="8"><el-input placeholder="E-mail Addreess" v-model="customerEmail"/></el-col>
+                <el-col :xs="1" :sm="2" :md="2" :lg="2" :xl="2"><span>&nbsp;</span></el-col>
+              </el-row>
+
+              <div class="hint-label">*Only for communication when error occurs, can be empty</div>
               <el-button type="default" style="margin-top: 10px" @click="checkAccount()">Check Availability</el-button>
               <el-button type="primary" style="margin-top: 10px" @click="goCreate()" :disabled="shallNotPass">Pay to Create!</el-button>
-              <div style="font-size: 5px; color: grey; margin-top: 5px">*After click, please wait for Pop-up payment window to load</div>
+              <div class="hint-label">*After click, please wait for Pop-up payment window to load</div>
 
 
               <el-dialog title="Confirm Purchase" :visible.sync="dialogVisible">
@@ -156,7 +188,6 @@
                 </div>
               </el-dialog>
             </el-card>
-          </el-row>
         </el-card>
       </el-row>
 
@@ -197,7 +228,6 @@
     </el-main>
   </div>
 </template>
-
 
 <script>
 import EOS from 'eosjs';
@@ -587,21 +617,29 @@ export default {
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Raleway');
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
   #app {
-    font-family: Helvetica, sans-serif;
+    font-family: 'Roboto Condensed', sourcehansans-sc, Helvetica, sans-serif;
   }
   .body-card {
-    width: 85%;
+    width: 100%;
   }
   .buy-with-crypto {
     margin-top: 20px;
     width: 75%;
   }
   .h1 {
-    font-size: 30px;
+    font-size: 2rem;
     font-weight: bold;
     margin-top: 50px;
+  }
+  .hint-label {
+    font-size: 0.85rem;
+    color: grey;
+    margin-top: 5px
+  }
+  .input-card {
+    text-align: center;
   }
 </style>

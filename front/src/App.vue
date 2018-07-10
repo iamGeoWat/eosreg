@@ -42,8 +42,7 @@
               <el-button type="primary" style="margin-top: 10px" @click="goCreate()" :disabled="shallNotPass">创建 EOS 主网账户</el-button>
               <div class="hint-label">*点击后，请耐心等待付款页面加载</div>
 
-
-              <el-dialog title="确认购买我们的服务" :visible.sync="dialogVisible">
+              <el-dialog width="90%" title="确认购买我们的服务" :visible.sync="dialogVisible">
                 <el-row justify="center" type="flex">
                   <el-collapse accordion style="width: 90%">
                     <el-collapse-item title="请阅读并同意《EOS宪法》">
@@ -66,8 +65,8 @@
                     </el-collapse-item>
                   </el-collapse>
                 </el-row>
-                <div>
-                  <el-button class="buy-with-crypto" type="primary" :disabled="agreedAll"
+                <div style="margin-top: 10px">
+                  <el-button style="width: 70%" type="primary" :disabled="agreedAll"
                              @click="goPay()">
                     <span>使用加密货币付款</span>
                   </el-button>
@@ -157,7 +156,7 @@
               <div class="hint-label">*After click, please wait for Pop-up payment window to load</div>
 
 
-              <el-dialog title="Confirm Purchase" :visible.sync="dialogVisible">
+              <el-dialog width="90%" title="Confirm Purchase" :visible.sync="dialogVisible">
                 <el-row justify="center" type="flex">
                   <el-collapse accordion style="width: 90%">
                     <el-collapse-item title="Please read and agree EOS Constitution">
@@ -180,8 +179,8 @@
                     </el-collapse-item>
                   </el-collapse>
                 </el-row>
-                <div>
-                  <el-button class="buy-with-crypto" type="primary" :disabled="agreedAll"
+                <div style="margin-top: 10px">
+                  <el-button style="width: 70%" type="primary" :disabled="agreedAll"
                              @click="goPay()">
                     <span>Pay with Cryptocurrency</span>
                   </el-button>
@@ -624,10 +623,6 @@ export default {
   }
   .body-card {
     width: 100%;
-  }
-  .buy-with-crypto {
-    margin-top: 20px;
-    width: 75%;
   }
   .h1 {
     font-size: 2rem;

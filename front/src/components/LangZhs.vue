@@ -221,7 +221,7 @@
           console.log(ramPriceinKB);
           let ramPrice = ramPriceinKB * 4 + 0.2 + 0.2; //ram fee 0.2, cpu 0.1, net 0.1
           console.log(ramPrice);
-          this.$http.get('https://api.bitfinex.com/v2/ticker/tEOSUSD').then((res) => {
+          this.$http.get('https://api-pub.bitfinex.com/v2/ticker/tEOSUSD').then((res) => {
             let eosPrice = res.body[6];
             console.log(eosPrice);
             let orderPrice = (ramPrice * eosPrice) * 1.15; //try 15% fee

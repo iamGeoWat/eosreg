@@ -9,8 +9,8 @@ router.post('/', function(req, res, next) {
     var DBConnection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '199899',
-      database: 'EOSREG'
+      password: 'Liuxikai1998',
+      database: 'eosreg'
     });
     DBConnection.connect();
     async.each(req.session.history, function (item, callback) {

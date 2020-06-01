@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
+import Axios from 'axios'
 import VueResource from 'vue-resource'
+
 import ElementUI from 'element-ui'
 import enLang from 'element-ui/lib/locale/lang/en'
 import lang from 'element-ui/lib/locale'
@@ -10,7 +12,10 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 Vue.config.productionTip = false
+
+Vue.use(Axios)
 Vue.use(VueResource)
+
 Vue.use(ElementUI)
 lang.use(enLang)
 

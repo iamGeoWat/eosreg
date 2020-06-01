@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-        <el-button @click="goPay">asd</el-button>
         <el-main>
             <el-row justify="center" type="flex">
                 <el-card class="body-card" type="flex">

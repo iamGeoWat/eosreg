@@ -121,8 +121,8 @@
   import ElRow from "element-ui/packages/row/src/row";
   const EOS_CONFIG = {
     clientConfig: {
-      httpEndpoint: 'https://mainnet.genereos.io', // EOS http endpoint
-      chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
+      httpEndpoint: 'https://fullnode.meet.one', // EOS http endpoint
+      chainId: 'cfe6486a83bad4962f232d48003b1824ab5665c36778141034d75e57b956e422'
     }
   };
 
